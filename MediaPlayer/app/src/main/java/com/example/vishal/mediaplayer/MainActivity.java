@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    MediaPlayer mediaPlayer;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,12 +20,13 @@ public class MainActivity extends AppCompatActivity {
         Button btnPlay = (Button) findViewById(R.id.play);
         Button btnPause = (Button) findViewById(R.id.pause);
         Button btnStop = (Button) findViewById(R.id.stop);
+        mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.idhedho_bagunde_cheli);
 
-        final MediaPlayer mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.idhedho_bagunde_cheli);
 
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Toast.makeText(MainActivity.this, "Play",Toast.LENGTH_SHORT).show();
                 mediaPlayer.start();
             }
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "Stop",Toast.LENGTH_SHORT).show();
                 mediaPlayer.stop();
+                mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.idhedho_bagunde_cheli);
                // MainActivity.this.finish();
             }
         });
